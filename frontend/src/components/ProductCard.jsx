@@ -1,6 +1,15 @@
 import { Box, Image, Heading, HStack, Button} from "@chakra-ui/react"
+import { useProductStore } from "../store/product"
 
 const ProductCard = ({product}) => {
+    const {deleteProduct} = useProductStore()
+
+    const handleDeleteProduct = async (pid) => {
+        const {success, message} = await deleteProduct(pid)
+        console.log(success)
+        console.log(message)
+    }
+
     return (
         <Box>
             <Image src={product.image} alt={product.name} h={48} w='full' objectFit='cover'/>
@@ -14,7 +23,7 @@ const ProductCard = ({product}) => {
 
             <HStack spacing={2}>
                 <Button>Edit</Button>
-                <Button>Delete</Button>
+                <Button onClick={() => handleDeleteProduct(product._id)}>Delete</Button>
             </HStack>
         </Box>
     )
