@@ -25,6 +25,8 @@ const ProductCard = ({product}) => {
                 <Button>Edit</Button>
                 <Button onClick={() => handleDeleteProduct(product._id)}>Delete</Button>
             </HStack>
+
+            <Modal></Modal>
         </Box>
     )
 }
